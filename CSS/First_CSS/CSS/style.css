@@ -1,0 +1,38 @@
+h1 {
+    color: red;
+}
+p, li {
+    color: green;
+}
+li {
+    list-style-type:disc;
+}
+/* li.special, span.special {
+    color: orange;
+    font-weight: bold;
+} */
+li.special {
+    color: rgb(255, 0, 85);
+    font-weight: bold;
+}
+li em {
+    color: rgb(55, 0, 255);
+    font-weight: bold;
+}
+h1 + p {
+    font-size: 200%;
+}
+a:link {
+    color:black;
+}
+a:visited {
+    color: rgb(215, 221, 160);
+}
+a:hover {
+    text-decoration: none;
+}
+body h1 + p .special {
+    color: yellow;
+    background-color: black;
+    padding: 5px;
+}

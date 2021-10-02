@@ -1,0 +1,40 @@
+/* .box {
+    border: 1px solid #333333;
+    width: 200px;
+    height: 100px;
+    overflow: auto;
+}
+
+.word {
+    border: 1px solid #333333;
+    width: 100px;
+    font-size: 250%;
+    margin: auto;
+    overflow: scroll;
+}
+
+html {
+    font-size: 16px;
+  }
+  
+  .ems li {
+    font-size: 1.3em;
+  }
+  
+  .rems li {
+    font-size: 1.3rem;
+  } */
+
+  .wrapper {
+      width: 400px;
+      border: 5px solid rebeccapurple;
+  }
+
+  .px {
+      width: 200px;
+  }
+
+  .percent {
+      width: 40%;
+  }
+  

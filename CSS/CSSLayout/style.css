@@ -1,0 +1,94 @@
+/* .wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 100px 100px;
+    grid-gap: 10px;
+}
+
+.wrapper > div {
+    flex: 1;
+} */
+
+/* div {
+    background-color: chocolate;
+    border: black;
+} */
+
+/* .box {
+    float: left;
+    width: 150px;
+    height: 150px;
+    margin-right: 30px;
+    background-color: chocolate;
+    border: 2px solid rebeccapurple;
+    border-radius: 10%;
+} */
+
+/* body {
+    width: 500px;
+    margin: 0 auto;
+  } */
+/*   
+  p {
+      background-color: rgb(207,232,220);
+      border: 2px solid rgb(79,185,227);
+      padding: 10px;
+      margin: 10px;
+      border-radius: 5px;
+  }
+
+  .positioned {
+      position: absolute;
+      background: rgba(255,84,104,.3);
+      border: 2px solid rgb(255,84,104);
+      top: 30px;
+      left: 30px;
+  } */
+
+  /* .positioned {
+    position: sticky;
+    background: rgba(255,84,104,.3);
+    border: 2px solid rgb(255,84,104);
+    top: 450px;
+    left: 30px;
+} */
+
+html {
+    font-family: sans-serif;
+  }
+  
+  form {
+    display: table;
+    margin: 0 auto;
+  }
+  
+  form div {
+    display: table-row;
+  }
+  
+  form label, form input {
+    display: table-cell;
+    margin-bottom: 10px;
+  }
+  
+  form label {
+    width: 200px;
+    padding-right: 5%;
+    text-align: right;
+  }
+  
+  form input {
+    width: 300px;
+  }
+  
+  form p {
+    display: table-caption;
+    caption-side: bottom;
+    width: 300px;
+    color: #999;
+    font-style: italic;
+  }
+
+  .container {
+    column-width: 200px;
+}

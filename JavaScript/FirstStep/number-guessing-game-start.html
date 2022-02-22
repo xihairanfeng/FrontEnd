@@ -54,7 +54,7 @@
             let resetButton;
 
             function checkGuesss() {
-                alert('我是一个占位符');
+                // alert('我是一个占位符');
 
                 let userGuess = Number(guessField.value)
                 if (guessCount === 1) {
@@ -82,6 +82,37 @@
                 guessCount++;
                 guessField.value = '';
                 guessField.focus();
+            }
+
+            guessSubmit.addEventListener('click', checkGuesss);
+
+            function setGameOver() {
+                guessField.disabled = true;
+                guessSubmit.disabled = true;
+                resetButton = document.createElement('button');
+                resetButton.textContent = '开始新游戏';
+                document.body.appendChild(resetButton);
+                resetButton.addEventListener('click', resetButton);
+            }
+
+            function reset() {
+                guessCount = 1;
+
+                const resetParas = document.querySelectorAll('.resultParas p');
+                for (let i = 0; i < resetParas.length; i++) {
+                    resetParas[i].textContent = '';
+                }
+
+                resetButton.parentNode.removeChild(resetButton);
+
+                guessField.disabled = false;
+                guessSubmit.disabled = false;
+                guessField.value = '';
+                guessField.foucs();
+
+                lastResult.style.backgrooundColor = 'white';
+
+                randomNumber = Math.floor(Math.random() * 100) + 1;
             }
         </script>
     </body>

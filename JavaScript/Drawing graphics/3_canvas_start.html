@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas class="myCanvas">
+      <p>小崔的第一个画画页面</p>
+    </canvas>
+    <script>
+      var canvas = document.querySelector('.myCanvas');
+      var width = canvas.width = innerWidth;
+      var height = canvas.height = window.innerHeight;
+      window.onresize = function() {
+        width = canvas.width = innerWidth;
+        height = canvas.widt = window.innerHeight;
+      }
+
+      var ctx = canvas.getContext('2d')
+
+      ctx.fillStyle = 'rgb(0, 0, 0)';
+      ctx.fillRect(0, 0, width, height);
+
+      ctx.strokeStyle = 'white';
+      ctx.lineWidth = 2;
+      ctx.font = '36px arial';
+      ctx.strokeText('Canvas text', 50, 50);
+
+      ctx.fillStyle = 'red';
+      ctx.font = '48px georgia';
+      ctx.fillText('Canvas text', 50, 150);
+      
+
+    </script>
+  </body>
+</html>

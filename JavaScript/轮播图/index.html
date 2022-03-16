@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    ul {
+      list-style: none;
+    }
+    #wrap {
+      overflow: hidden;
+      position: relative;
+      width: 1226px;
+      height: 580px;
+      margin: 200px auto 0;
+    }
+    #wrap .img-list {
+      display: flex;
+      position: relative;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      transition: 0.5s ease;
+    }
+    #wrap .img-list img {
+      width: 100%;
+      cursor: pointer;
+    }
+    #wrap a {
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -50%);
+      display: block;
+      width: 40px;
+      height: 70px;
+      background-color: black;
+      color: white;
+      user-select: none;
+      font-size: 30px;
+      text-align: center;
+      line-height: 70px;
+      text-decoration: none;
+      opacity: 0.4;
+    }
+    #wrap a.left {
+      left: 0;
+    }
+    #wrap a.right {
+      right: 0;
+    }
+    .circle-list {
+      display: flex;
+      position: absolute;
+      bottom: 5px;
+      left: 50%;
+      transform: translate(-50%, 0);
+      width: 240px;
+      height: 40px;
+      z-index: 8;
+    }
+    .circle-list > .circle {
+      margin: 0 5px;
+      width: 20px;
+      height: 20px;
+      background-color: #ffffff;
+      border-radius: 50%;
+      opacity:0.6;
+    }
+    .circle-list > .circle.active {
+      background-color: rgb(60, 26, 184);
+    }
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <!-- 图片列表 -->
+    <div class="img-list">
+      <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F013c785bbac0ffa801213dea9bb848.jpg%402o.jpg&refer=http%3A%2F%2Fimg.zcool.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1649982137&t=6495170918419b20e2ccd2267dbae218" alt="taylor1">
+      <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01aef75ec2952ba8012148142a61d2.png%402o.png&refer=http%3A%2F%2Fimg.zcool.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1649982137&t=daf4c53b8c010a17116d902d91a5ee9a" alt="taylor2">
+      <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01cea05acc4cc0a801204029f30fa6.jpg%402o.jpg&refer=http%3A%2F%2Fimg.zcool.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1649982137&t=a6dc4a3fb2dbd6d4bbd211e6e3b483bc" alt="taylor3">
+      <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fbpic.588ku.com%2Fback_pic%2F03%2F74%2F87%2F4257bd06fa9f68d.jpg&refer=http%3A%2F%2Fbpic.588ku.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1649982210&t=4f8f6a59aebeb3cf99bc9c2d397e280a" alt="taylor4">
+      <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F1a55b2a4e4929d4cee8f5a053189e85709f74dd4a3b7a-3XJvkj_fw658&refer=http%3A%2F%2Fhbimg.b0.upaiyun.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1649982803&t=20c687bdedde7b92d3695e78ce551d73" alt="taylor5">
+    </div>
+
+    <!-- 小箭头 -->
+    <div class="arrow">
+      <a href="javascript:;" class="left"><</a>
+      <a href="javascript:;" class="right">></a>
+    </div>
+
+    <ul class="circle-list">
+      <li class="circle active" data-n="0"></li>
+      <li class="circle" data-n="1"></li>
+      <li class="circle" data-n="2"></li>
+      <li class="circle" data-n="3"></li>
+      <li class="circle" data-n="4"></li>
+    </ul>
+  </div>
+  
+  <script>
+    
+    let oLeft = document.querySelector('.left')
+    let oRight = document.querySelector('.right')
+    let oImgList = document.querySelector('.img-list')
+
+    //克隆第一张图片，将第一张图片添加至图片列表的末尾
+    let cloneFirstImg = oImgList.firstElementChild.cloneNode();
+    oImgList.appendChild(cloneFirstImg);
+
+    //图片索引 代表当前是第几张图片
+    // 右按钮实现
+    let index = 0;
+    let lock = true;
+    function rightClick() {
+      if(!lock) return;
+      console.log('Right')
+      index++;
+      oImgList.style.left = index * -1226 + 'px';
+      oImgList.style.transition = '0.5s ease';
+      if(index === 5) {
+        index = 0;
+        setTimeout(()=>{
+          oImgList.style.left = index * -1226 + 'px';
+          oImgList.style.transition = 'none';
+        }, 500)
+      }
+      setCircles();
+      lock = false;
+      setTimeout(() => {
+        lock = true;
+      }, 500)
+    }
+    oRight.addEventListener('click', rightClick);
+
+    //左按钮实现
+    function leftClick() {
+      if(!lock) return;
+      console.log('Left')
+      index--;
+      if(index === -1) {
+        index = 5
+        oImgList.style.left = index * -1226 + 'px';
+        oImgList.style.transition = 'none';
+        index = 4;
+        setTimeout(()=>{
+          oImgList.style.left = index * -1226 + 'px';
+          oImgList.style.transition = '0.5s ease';
+        }, 300)
+      } else {
+        oImgList.style.left = index * -1226 + 'px';
+        oImgList.style.transition = '0.5s ease';
+      }
+      setCircles();
+      lock = false;
+      setTimeout(() => {
+        lock = true;
+      }, 500)
+    }
+
+    oLeft.addEventListener('click', leftClick);
+
+    let circles = document.querySelectorAll('.circle')
+
+    function setCircles() {
+      for(let i = 0; i < circles.length; i++) {
+        if(i === index) {
+          circles[i].classList.add('active');
+        } else {
+          circles[i].classList.remove('active')
+        }
+      }
+    }
+
+    const oCircle = document.querySelector('.circle-list');
+    oCircle.addEventListener('click', (e) => {
+      //点击小圆点的时候，切换图片
+      clearInterval(autoPlayer);
+      if(e.target.nodeName.toLowerCase() === 'li') {
+        //当前元素data-n对应的值
+        const n = Number(e.target.getAttribute('data-n'));
+        index = n;
+        oImgList.style.left = index * -1226 + 'px';
+        oImgList.style.transition = '0.5s ease';
+        setCircles();
+      }
+    })
+
+    //自动轮播
+    let autoPlayer = setInterval(rightClick, 3000);
+    
+    const oWrap = document.querySelector('#wrap');
+    oWrap.onmouseenter = function () {
+      clearInterval(autoPlayer);
+    }
+
+    oWrap.onmouseleave = function () {
+      //设表先关
+      clearInterval(autoPlayer);
+      autoPlayer = setInterval(rightClick, 3000);    
+    }
+
+  </script>
+</body>
+</html>
